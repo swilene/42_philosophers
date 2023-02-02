@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 10:19:25 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/01 18:27:37 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:47:56 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	main(int argc, char **argv)
 	if (check_inputs(&data, argc, argv))
 		return (2);
 	data.lst = NULL;
-	creating_threads(&data);
-	ft_lstclear(&data.lst);
+	philo(&data);
 	return (0);
 }

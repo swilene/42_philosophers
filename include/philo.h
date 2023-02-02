@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 12:08:36 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/01 18:28:43 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/02 15:38:25 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 typedef struct s_list
 {
-	int				nb_philo;
-	int				nb_fork;
+	int				philo;
+	int				fork;
 	struct s_list	*next;
 }	t_list;
 
@@ -32,13 +32,13 @@ typedef struct s_data
 	size_t	eat;
 	size_t	sleep;
 	size_t	number_eat;
-	//pthread_t	*p;
+	int		index;
 	t_list	*lst;
 }	t_data;
 
 int		check_inputs(t_data *data, int argc, char **argv);
-int		creating_threads(t_data *data);
-void	*philo();
+int		philo(t_data *data);
+void	*routine(void *data);
 
 size_t	ft_atoi(const char *nptr);
 size_t	ft_strlen(const char *s);

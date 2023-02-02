@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/20 09:51:29 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/02 13:55:02 by saguesse         ###   ########.fr       */
+/*   Created: 2023/02/01 11:08:41 by saguesse          #+#    #+#             */
+/*   Updated: 2023/02/02 15:41:20 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-t_list	*ft_lstnew(int nb)
+void	*routine(void *arg)
 {
-	t_list	*head;
+	t_data	*data;
 
-	head = malloc(sizeof(t_list));
-	if (!head)
-		return (printf("new: Cannot allocate memory.\n"), NULL);
-	head->philo = nb;
-	head->fork = 0;
-	head->next = NULL;
-	return (head);
+	data = (t_data *)arg;
+	while (1)
+	{
+		//eat
+		//sleep
+		//think
+	}
+	return (0);
 }

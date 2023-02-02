@@ -6,7 +6,7 @@
 #    By: saguesse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/07 14:54:21 by saguesse          #+#    #+#              #
-#    Updated: 2023/02/01 18:30:52 by saguesse         ###   ########.fr        #
+#    Updated: 2023/02/02 13:52:36 by saguesse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ RM = rm -rf
 SRC_DIR = srcs
 SRC_FILES = main.c \
 			check_inputs.c \
-			creating_threads.c \
 			philo.c \
+			routine.c \
 			ft_atoi.c \
 			ft_strlen.c \
 			ft_lstnew.c \
