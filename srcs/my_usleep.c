@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   my_usleep.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 10:29:05 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/01 14:37:03 by saguesse         ###   ########.fr       */
+/*   Created: 2023/02/03 12:01:07 by saguesse          #+#    #+#             */
+/*   Updated: 2023/02/03 18:41:49 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void	my_usleep(t_philo *p, int time)
 {
-	if (lst == NULL)
-		return (lst);
-	else
+	gettimeofday(&p->now, NULL);
+	while (p->now.tv_usec - p->data->start.tv_usec < time * 1000)
 	{
-		while (lst->next != NULL)
-			lst = lst->next;
+		usleep(10);
+		gettimeofday(&p->now, NULL);
 	}
-	return (lst);
 }

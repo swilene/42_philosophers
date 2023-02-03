@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   sleeping.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/20 09:51:29 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/02 13:55:02 by saguesse         ###   ########.fr       */
+/*   Created: 2023/02/03 18:35:44 by saguesse          #+#    #+#             */
+/*   Updated: 2023/02/03 18:47:01 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-t_list	*ft_lstnew(int nb)
+void	sleeping(t_philo *p)
 {
-	t_list	*head;
-
-	head = malloc(sizeof(t_list));
-	if (!head)
-		return (printf("new: Cannot allocate memory.\n"), NULL);
-	head->philo = nb;
-	head->fork = 0;
-	head->next = NULL;
-	return (head);
+	gettimeofday(&p->now, NULL);
+	pthread_mutex_lock(&p->mutex);
+	printf("%ld %ld is sleeping\n\n", (p->now.tv_usec
+		- p->data->start.tv_usec) / 1000, p->index);	
+	pthread_mutex_unlock(&p->mutex);
 }

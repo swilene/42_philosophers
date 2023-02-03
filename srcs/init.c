@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/20 10:16:52 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/01 14:39:28 by saguesse         ###   ########.fr       */
+/*   Created: 2023/02/03 15:52:13 by saguesse          #+#    #+#             */
+/*   Updated: 2023/02/03 17:37:48 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int	init(t_philo *p, t_data *data)
 {
-	t_list	*last;
+	size_t	i;
 
-	if ((*lst) == NULL)
-		(*lst) = new;
-	else
+	data->forks = malloc(sizeof(int) * data->nb_philo);
+	if (!data->forks)
+		return (printf("forks: Cannot allocate memory.\n"), 1);
+	memset(data->forks, 0, data->nb_philo);
+	i = 0;
+	while (i < data->nb_philo)
 	{
-		last = ft_lstlast(*lst);
-		last->next = new;
+		p[i].index = i + 1;
+		p[i].data = data;
+		i++;
 	}
+	return (0);
 }

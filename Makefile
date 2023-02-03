@@ -6,7 +6,7 @@
 #    By: saguesse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/07 14:54:21 by saguesse          #+#    #+#              #
-#    Updated: 2023/02/02 13:52:36 by saguesse         ###   ########.fr        #
+#    Updated: 2023/02/03 18:49:40 by saguesse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,14 +18,15 @@ RM = rm -rf
 SRC_DIR = srcs
 SRC_FILES = main.c \
 			check_inputs.c \
+			init.c \
 			philo.c \
 			routine.c \
+			eating.c \
+			thinking.c \
+			sleeping.c \
+			my_usleep.c \
 			ft_atoi.c \
-			ft_strlen.c \
-			ft_lstnew.c \
-			ft_lstadd_back.c \
-			ft_lstlast.c \
-			ft_lstclear.c
+			ft_strlen.c
 SRC = $(SRC_FILES:%=$(SRC_DIR)/%)
 
 OBJ_DIR = objs
