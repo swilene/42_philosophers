@@ -6,7 +6,7 @@
 #    By: saguesse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/07 14:54:21 by saguesse          #+#    #+#              #
-#    Updated: 2023/02/03 18:49:40 by saguesse         ###   ########.fr        #
+#    Updated: 2023/02/06 14:43:20 by saguesse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,13 @@ SRC_DIR = srcs
 SRC_FILES = main.c \
 			check_inputs.c \
 			init.c \
-			philo.c \
+			threads.c \
 			routine.c \
 			eating.c \
 			thinking.c \
 			sleeping.c \
 			my_usleep.c \
+			clear.c \
 			ft_atoi.c \
 			ft_strlen.c
 SRC = $(SRC_FILES:%=$(SRC_DIR)/%)
