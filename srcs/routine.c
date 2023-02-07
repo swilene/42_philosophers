@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:08:41 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/06 18:02:48 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/07 23:48:09 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	*routine(void *arg)
 	else
 		p->right = p->index;
 	p->left = p->index - 1;
-	gettimeofday(&p->start, NULL);
-	gettimeofday(&p->start_eating, NULL);
+	p->start = now();
+	p->start_eating = now();
 	if (p->index % 2)
 	{
 		thinking(p);
