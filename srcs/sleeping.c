@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 18:35:44 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/08 14:27:59 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/08 23:45:28 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,7 @@
 
 void	sleeping(t_philo *p)
 {
-	size_t	t;
-
-	t = now();
-	pthread_mutex_lock(&p->mutex);
-	if (!p->data->death)
-		printf("%ld %ld is sleeping\n", t - p->start, p->index);
-	pthread_mutex_unlock(&p->mutex);
+	pthread_mutex_lock(&p->data->msg);
+	print_msg(p, "is sleeping");
+	pthread_mutex_unlock(&p->data->msg);
 }

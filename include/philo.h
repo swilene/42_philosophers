@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 12:08:36 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/08 17:32:03 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/09 00:19:16 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ typedef struct s_data
 	size_t			number_eat;
 	int				died;
 	int				*eat_count;
+	//int				*forks;
 	pthread_mutex_t	death;
 	pthread_mutex_t	msg;
 	pthread_mutex_t	count;
-	pthread_mutex_t	*forks;
+	pthread_mutex_t	forks[200];
 }	t_data;
 
 typedef struct s_philo
@@ -44,6 +45,8 @@ typedef struct s_philo
 	size_t			start_eating;
 	t_data			*data;
 	pthread_t		t;
+	//pthread_mutex_t	left_fork;
+	//pthread_mutex_t	right_fork;
 }	t_philo;
 
 int		check_inputs(t_data *data, int argc, char **argv);

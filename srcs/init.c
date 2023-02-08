@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 15:52:13 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/08 17:37:11 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/09 00:18:21 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	init_mutex(t_data *data)
 {
 	pthread_mutex_init(&data->death, NULL);
 	pthread_mutex_init(&data->msg, NULL);
-	pthread_mutex_init(data->eat_count, NULL);
+	pthread_mutex_init(&data->count, NULL);
 	pthread_mutex_init(data->forks, NULL);
 }
 
@@ -24,9 +24,6 @@ int	init(t_philo *p, t_data *data)
 {
 	size_t	i;
 
-	data->forks = malloc(sizeof(int) * data->nb_philo);
-	if (!data->forks)
-		return (printf("forks: Cannot allocate memory.\n"), 1);
 	if (data->number_eat)
 	{
 		data->eat_count = malloc(sizeof(int) * data->nb_philo);

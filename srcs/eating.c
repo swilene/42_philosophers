@@ -6,13 +6,13 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:12:20 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/08 17:33:09 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/09 00:20:32 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	start_eating(t_philo *p)
+void	eating(t_philo *p)
 {
 	pthread_mutex_lock(&p->data->forks[p->left]);
 	print_msg(p, "has taken a fork");
