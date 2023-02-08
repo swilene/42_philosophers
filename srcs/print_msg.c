@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_msg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 10:19:25 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/08 16:55:15 by saguesse         ###   ########.fr       */
+/*   Created: 2023/02/08 16:18:20 by saguesse          #+#    #+#             */
+/*   Updated: 2023/02/08 17:17:34 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int	main(int argc, char **argv)
+void	print_msg(t_philo *p, char *s)
 {
-	t_data	*data;
-	t_philo	*p;
-
-	if (argc < 5 || argc > 6)
-		return (printf("Number of arguments must be between 4 and 5.\n"), 1);
-	data = malloc(sizeof(t_data));
-	if (check_inputs(data, argc, argv))
-		return (2);
-	p = malloc(sizeof(t_philo) * data->nb_philo);
-	if (!p)
-		return (3);
-	init(p, data);
-	threads(p, data);
-	clear(p, data);
-	return (0);
+	pthread_mutex_lock(&p->data->msg);
+	if (!p->data->died)
+		printf("%lld %ld %s\n", now() - p->start, p->index, s);
+	pthread_mutex_unlock(&p->data->msg);
 }

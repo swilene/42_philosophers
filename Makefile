@@ -6,7 +6,7 @@
 #    By: saguesse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/07 14:54:21 by saguesse          #+#    #+#              #
-#    Updated: 2023/02/07 23:50:11 by saguesse         ###   ########.fr        #
+#    Updated: 2023/02/08 17:32:22 by saguesse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC_FILES = main.c \
 			thinking.c \
 			sleeping.c \
 			my_usleep.c \
+			print_msg.c \
 			get_time_now.c \
 			clear.c \
 			ft_atoi.c \

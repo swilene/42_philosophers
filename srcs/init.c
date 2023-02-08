@@ -6,11 +6,19 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 15:52:13 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/06 11:16:31 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/08 17:37:11 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
+
+void	init_mutex(t_data *data)
+{
+	pthread_mutex_init(&data->death, NULL);
+	pthread_mutex_init(&data->msg, NULL);
+	pthread_mutex_init(data->eat_count, NULL);
+	pthread_mutex_init(data->forks, NULL);
+}
 
 int	init(t_philo *p, t_data *data)
 {
@@ -19,7 +27,6 @@ int	init(t_philo *p, t_data *data)
 	data->forks = malloc(sizeof(int) * data->nb_philo);
 	if (!data->forks)
 		return (printf("forks: Cannot allocate memory.\n"), 1);
-	memset(data->forks, 0, sizeof(int) * data->nb_philo);
 	if (data->number_eat)
 	{
 		data->eat_count = malloc(sizeof(int) * data->nb_philo);
@@ -29,6 +36,7 @@ int	init(t_philo *p, t_data *data)
 	}
 	else
 		data->eat_count = NULL;
+	data->died = 0;
 	i = 0;
 	while (i < data->nb_philo)
 	{

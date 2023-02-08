@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:24:34 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/06 14:41:46 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/08 16:48:39 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	threads(t_philo *p, t_data *data)
 {
 	size_t			i;
 
+	init_mutex(data);
 	i = 0;
 	while (i < data->nb_philo)
 	{
-		pthread_mutex_init(&(p[i].mutex), NULL);
 		if (pthread_create(&(p[i].t), NULL, &routine, &p[i]) < 0)
 			return (printf("Failed to create thread\n"), 1);
 		i++;
@@ -29,7 +29,6 @@ int	threads(t_philo *p, t_data *data)
 	{
 		if (pthread_join(p[i].t, NULL) < 0)
 			return (printf("Failed to join\n"), 2);
-		pthread_mutex_destroy(&(p[i].mutex));
 		i++;
 	}
 	return (0);
