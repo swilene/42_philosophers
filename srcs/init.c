@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 15:52:13 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/09 16:41:20 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/09 22:08:24 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_philos(t_philo *p, t_data *data, t_fork *forks)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (i < data->nb_philo)
@@ -33,7 +33,7 @@ void	init_philos(t_philo *p, t_data *data, t_fork *forks)
 
 int	init(t_philo *p, t_data *data, t_fork *forks)
 {
-	size_t	i;
+	int	i;
 
 	data->died = 0;
 	data->eat_count = 0;

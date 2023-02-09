@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sleeping.c                                         :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 18:35:44 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/09 14:20:52 by saguesse         ###   ########.fr       */
+/*   Created: 2023/02/03 12:01:07 by saguesse          #+#    #+#             */
+/*   Updated: 2023/02/09 22:42:00 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	sleeping(t_philo *p)
+long long int	now(void)
 {
-	pthread_mutex_lock(&p->data->mutex);
-	printf("%ld %ld is sleeping\n", now() - p->start, p->index);
-	pthread_mutex_unlock(&p->data->mutex);
+	struct timeval	now;
+
+	gettimeofday(&now, NULL);
+	return ((now.tv_sec * 1000) + (now.tv_usec / 1000));
+}
+
+int	my_usleep(t_philo *p, int time)
+{
+	long long int	t;
+
+	t = now();
+	while (now() - t < time)
+	{
+		if ((int)(now() - p->start_eating) >= p->data->time_to_die)
+			print_msg(p, "died", DIED);
+		usleep(50);
+	}
+	return (0);
 }

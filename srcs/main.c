@@ -6,11 +6,32 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 10:19:25 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/09 16:43:19 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/09 22:38:43 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
+
+void	clear(t_philo *p, t_data *data, t_fork *forks)
+{
+	int	i;
+
+	i = 0;
+	if (forks)
+	{
+		while (i < data->nb_philo)
+		{
+			pthread_mutex_destroy(&forks[i].mutex_fork);
+			i++;
+		}
+		free(forks);
+	}
+	pthread_mutex_destroy(&data->mutex);
+	if (data)
+		free(data);
+	if (p)
+		free(p);
+}
 
 int	main(int argc, char **argv)
 {
@@ -24,7 +45,7 @@ int	main(int argc, char **argv)
 	if (!data)
 		return (2);
 	if (check_inputs(data, argc, argv))
-		return (2);
+		return (free(data), 2);
 	p = malloc(sizeof(t_philo) * data->nb_philo);
 	if (!p)
 		return (free(data), 3);

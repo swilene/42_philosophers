@@ -6,7 +6,7 @@
 #    By: saguesse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/07 14:54:21 by saguesse          #+#    #+#              #
-#    Updated: 2023/02/09 16:07:51 by saguesse         ###   ########.fr        #
+#    Updated: 2023/02/09 22:41:03 by saguesse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,14 +20,9 @@ SRC_FILES = main.c \
 			check_inputs.c \
 			init.c \
 			threads.c \
-			routine.c \
 			eating.c \
 			print_msg.c \
-			my_usleep.c \
-			get_time_now.c \
-			clear.c \
-			ft_atoi.c \
-			ft_strlen.c
+			time.c
 SRC = $(SRC_FILES:%=$(SRC_DIR)/%)
 
 OBJ_DIR = objs

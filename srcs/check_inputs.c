@@ -6,11 +6,52 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:53:34 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/08 11:28:00 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/09 22:06:07 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
+
+size_t	ft_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	if (s == NULL)
+		return (i);
+	while (s[i])
+		i++;
+	return (i);
+}
+
+int	ft_atoi(const char *nptr)
+{
+	size_t	nb;
+	size_t	i;
+
+	nb = 0;
+	i = 0;
+	if (ft_strlen(nptr) > 10)
+		return (2147483648);
+	if (nptr[i] == '+' || nptr[i] == '-')
+	{
+		if (nptr[i] == '-' && nptr[i + 1] >= '0' && nptr[i + 1] <= '9')
+			return (printf("Input can't be negative!\n"), -1);
+		i++;
+	}
+	if (nptr[i] == '\0')
+		return (printf("Input must be numeric!\n"), -1);
+	while (nptr[i])
+	{
+		if (nptr[i] < '0' || nptr[i] > '9')
+			return (printf("Input must be numeric!\n"), -1);
+		nb = nb * 10 + nptr[i] - '0';
+		i++;
+	}
+	if (nb > INT_MAX)
+		return (printf("Input must be less than INT_MAX!\n"), -1);
+	return ((int)nb);
+}
 
 int	check_inputs(t_data *data, int argc, char **argv)
 {
@@ -30,8 +71,8 @@ int	check_inputs(t_data *data, int argc, char **argv)
 	}
 	else
 		data->number_eat = 0;
-	if (data->nb_philo > INT_MAX || data->time_to_die > INT_MAX
-		|| data->time_to_eat > INT_MAX || data->time_to_sleep > INT_MAX)
+	if (data->nb_philo < 0 || data->time_to_die < 0
+		|| data->time_to_eat < 0 || data->time_to_sleep < 0)
 		return (4);
 	return (0);
 }
