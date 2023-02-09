@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 12:08:36 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/09 00:19:16 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/09 16:07:34 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@
 # include <string.h>
 # include <sys/time.h>
 
+# define EAT 1
+# define SLEEP 2
+# define THINK 3
+# define DIED 4
+
 typedef struct s_data
 {
 	size_t			nb_philo;
@@ -28,38 +33,37 @@ typedef struct s_data
 	size_t			time_to_sleep;
 	size_t			number_eat;
 	int				died;
-	int				*eat_count;
-	//int				*forks;
-	pthread_mutex_t	death;
-	pthread_mutex_t	msg;
-	pthread_mutex_t	count;
-	pthread_mutex_t	forks[200];
+	int				eat_count;
+	pthread_mutex_t	mutex;
 }	t_data;
+
+typedef struct s_fork
+{
+	pthread_mutex_t	mutex_fork;
+	int				forks;
+}	t_fork;
 
 typedef struct s_philo
 {
-	int				right;
-	int				left;
 	size_t			index;
+	size_t			count;
 	size_t			start;
 	size_t			start_eating;
 	t_data			*data;
+	t_fork			*right;
+	t_fork			*left;
 	pthread_t		t;
-	//pthread_mutex_t	left_fork;
-	//pthread_mutex_t	right_fork;
 }	t_philo;
 
 int		check_inputs(t_data *data, int argc, char **argv);
-int		init(t_philo *p, t_data *data);
-void	init_mutex(t_data *data);
+int		init(t_philo *p, t_data *data, t_fork *forks);
 int		threads(t_philo *p, t_data *data);
 void	*routine(void *data);
-void	eating(t_philo *p);
-void	thinking(t_philo *p);
-void	sleeping(t_philo *p);
-void	print_msg(t_philo *p, char *s);
+void	start_eating(t_philo *p);
+void	finish_eating(t_philo *p);
+void	print_msg(t_philo *p, char *msg, int event);
 int		my_usleep(t_philo *p, int time);
-void	clear(t_philo *p, t_data *data);
+void	clear(t_philo *p, t_data *data, t_fork *forks);
 size_t	now(void);
 
 size_t	ft_atoi(const char *nptr);

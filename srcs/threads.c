@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:24:34 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/09 00:18:37 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:07:27 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	threads(t_philo *p, t_data *data)
 {
 	size_t			i;
 
-	init_mutex(data);
 	i = 0;
 	while (i < data->nb_philo)
 	{

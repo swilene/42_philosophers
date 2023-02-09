@@ -6,28 +6,29 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:16:47 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/08 23:50:16 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/09 16:40:26 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	detroy_mutex(t_data *data)
+void	clear(t_philo *p, t_data *data, t_fork *forks)
 {
-	pthread_mutex_destroy(&data->death);
-	pthread_mutex_destroy(&data->msg);
-	pthread_mutex_destroy(&data->count);
-	pthread_mutex_destroy(data->forks);
-}
+	size_t	i;
 
-void	clear(t_philo *p, t_data *data)
-{
+	i = 0;
+	if (forks)
+	{
+		while (i < data->nb_philo)
+		{
+			pthread_mutex_destroy(&forks[i].mutex_fork);
+			i++;
+		}
+		free(forks);
+	}
+	pthread_mutex_destroy(&data->mutex);
 	if (data)
 		free(data);
 	if (p)
 		free(p);
-	if (data->forks)
-		free(data->forks);
-	if (data->eat_count)
-		free(data->eat_count);
 }

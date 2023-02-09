@@ -6,31 +6,37 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:08:41 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/09 00:19:52 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/09 17:10:18 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	philos(t_philo *p)
+int	check_deaths(t_philo *p)
 {
-	while (!p->data->died)
+	pthread_mutex_lock(&p->data->mutex);
+	if (p->data->died || (p->data->number_eat && p->data->eat_count
+			== (int)p->data->nb_philo))
 	{
-		eating(p);
-		sleeping(p);
-		my_usleep(p, p->data->time_to_sleep);
-		thinking(p);
-		usleep(10);
-		//if everyone ate
-		//	break;
+		pthread_mutex_unlock(&p->data->mutex);
+		return (1);
 	}
+	pthread_mutex_unlock(&p->data->mutex);
+	return (0);
 }
 
-void	one_philo(t_philo *p)
+void	philos(t_philo *p)
 {
-	printf("%ld %ld has taken a fork\n", now() - p->start, p->index);
-	my_usleep(p, p->data->time_to_die);
-	printf("%ld %ld died\n", now() - p->start, p->index);
+	while (!check_deaths(p))
+	{
+		start_eating(p);
+		my_usleep(p, p->data->time_to_eat);
+		finish_eating(p);
+		print_msg(p, "is sleeping", 0);
+		my_usleep(p, p->data->time_to_sleep);
+		print_msg(p, "is thinking", 0);
+		usleep(100);
+	}
 }
 
 void	*routine(void *arg)
@@ -42,17 +48,14 @@ void	*routine(void *arg)
 	p->start_eating = now();
 	if (p->data->nb_philo == 1)
 	{
-		one_philo(p);
+		printf("%ld %ld has taken a fork\n", now() - p->start, p->index);
+		my_usleep(p, p->data->time_to_die);
+		printf("%ld %ld died\n", now() - p->start, p->index);
 		return (0);
 	}
-	if (p->index == p->data->nb_philo)
-		p->right = 0;
-	else
-		p->right = p->index;
-	p->left = p->index - 1;
 	if (p->index % 2)
 	{
-		thinking(p);
+		print_msg(p, "is thinking", 0);
 		my_usleep(p, p->data->time_to_eat);
 	}
 	philos(p);
