@@ -6,11 +6,11 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 12:01:07 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/09 22:42:00 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/10 16:27:35 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
 
 long long int	now(void)
 {

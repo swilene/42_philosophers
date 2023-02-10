@@ -6,11 +6,11 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 15:52:13 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/09 22:08:24 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/10 16:26:40 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
 
 void	init_philos(t_philo *p, t_data *data, t_fork *forks)
 {

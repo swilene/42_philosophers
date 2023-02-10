@@ -6,11 +6,11 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:24:34 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/10 10:06:30 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/10 16:27:06 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
 
 int	check_deaths(t_philo *p)
 {

@@ -6,11 +6,11 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:12:20 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/10 10:10:50 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/10 16:26:28 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
 
 void	take_fork(t_philo *p, t_fork *forks)
 {

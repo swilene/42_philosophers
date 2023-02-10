@@ -6,11 +6,11 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 10:19:25 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/09 22:38:43 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/10 16:26:53 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
 
 void	clear(t_philo *p, t_data *data, t_fork *forks)
 {

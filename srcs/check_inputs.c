@@ -6,11 +6,11 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:53:34 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/10 10:25:59 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/10 16:26:16 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
 
 size_t	ft_strlen(const char *s)
 {

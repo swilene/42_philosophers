@@ -6,11 +6,11 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 15:43:33 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/09 22:11:28 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/10 16:27:18 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
 
 void	print_msg(t_philo *p, char *msg, int event)
 {
