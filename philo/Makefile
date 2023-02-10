@@ -6,7 +6,7 @@
 #    By: saguesse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/07 14:54:21 by saguesse          #+#    #+#              #
-#    Updated: 2023/02/09 22:41:03 by saguesse         ###   ########.fr        #
+#    Updated: 2023/02/10 10:04:26 by saguesse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC_DIR = srcs
 SRC_FILES = main.c \
 			check_inputs.c \
 			init.c \
-			threads.c \
+			philo.c \
 			eating.c \
 			print_msg.c \
 			time.c

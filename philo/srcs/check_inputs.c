@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:53:34 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/09 22:06:07 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/10 10:25:59 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +56,28 @@ int	ft_atoi(const char *nptr)
 int	check_inputs(t_data *data, int argc, char **argv)
 {
 	data->nb_philo = ft_atoi(argv[1]);
-	if (data->nb_philo < 1)
+	if (data->nb_philo == 0)
 		return (printf("Number of philisophers must be at least of 1!\n"), 1);
+	else if (data->nb_philo < 0)
+		return (2);
 	data->time_to_die = ft_atoi(argv[2]);
+	if (data->time_to_die < 0)
+		return (3);
 	data->time_to_eat = ft_atoi(argv[3]);
+	if (data->time_to_eat < 0)
+		return (4);
 	data->time_to_sleep = ft_atoi(argv[4]);
+	if (data->time_to_sleep < 0)
+		return (5);
 	if (argc == 6)
 	{
 		data->number_eat = ft_atoi(argv[5]);
 		if (data->number_eat > INT_MAX)
-			return (2);
+			return (6);
 		if (data->number_eat < 1)
-			return (printf("Philosophers must eat at least once!\n"), 3);
+			return (printf("Philosophers must eat at least once!\n"), 7);
 	}
 	else
 		data->number_eat = 0;
-	if (data->nb_philo < 0 || data->time_to_die < 0
-		|| data->time_to_eat < 0 || data->time_to_sleep < 0)
-		return (4);
 	return (0);
 }

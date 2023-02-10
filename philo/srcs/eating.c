@@ -6,13 +6,13 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:12:20 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/09 22:31:44 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/10 10:10:50 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	lock_fork(t_philo *p, t_fork *forks)
+void	take_fork(t_philo *p, t_fork *forks)
 {
 	while (1)
 	{
@@ -34,11 +34,10 @@ void	lock_fork(t_philo *p, t_fork *forks)
 	}
 }
 
-
 void	eating(t_philo *p)
 {
-	lock_fork(p, p->left);
-	lock_fork(p, p->right);
+	take_fork(p, p->left);
+	take_fork(p, p->right);
 	print_msg(p, "is eating", EAT);
 	p->start_eating = now();
 	my_usleep(p, p->data->time_to_eat);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   threads.c                                          :+:      :+:    :+:   */
+/*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:24:34 by saguesse          #+#    #+#             */
-/*   Updated: 2023/02/09 22:37:00 by saguesse         ###   ########.fr       */
+/*   Updated: 2023/02/10 10:06:30 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,7 @@ void	*routine(void *arg)
 	p = (t_philo *)arg;
 	p->start = now();
 	p->start_eating = now();
-	if (p->data->nb_philo == 1)
-	{
-		usleep(p->data->time_to_die * 1000);
-		printf("%lld %d died\n", now() - p->start, p->index);
-		return (0);
-	}
-	if (p->index % 2)
+	if (p->index % 2 && p->data->nb_philo > 1)
 	{
 		print_msg(p, "is thinking", 0);
 		my_usleep(p, p->data->time_to_eat);
